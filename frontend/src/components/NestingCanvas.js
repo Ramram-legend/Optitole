@@ -118,16 +118,16 @@ export default function NestingCanvas({ result, sheetData }) {
   return (
     <div className="canvas-container">
       <div className="canvas-toolbar">
-        <span className="label-text">PRÉVISUALISATION</span>
+        <span className="label-text">PREVIEW</span>
         <div className="canvas-controls">
-          <button className="canvas-btn" onClick={resetView} title="Réinitialiser le zoom">
+          <button className="canvas-btn" onClick={resetView} title="Reset zoom">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M2 2h4M2 2v4M14 14h-4M14 14v-4M14 2h-4M14 2v4M2 14h4M2 14v-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
             </svg>
           </button>
           {hasResult && (
             <span className="canvas-info">
-              {result.placed_pieces.length} pièce{result.placed_pieces.length > 1 ? 's' : ''} placée{result.placed_pieces.length > 1 ? 's' : ''}
+              {result.placed_pieces.length} placed piece{result.placed_pieces.length > 1 ? 's' : ''}
             </span>
           )}
         </div>
@@ -269,7 +269,7 @@ export default function NestingCanvas({ result, sheetData }) {
             fontFamily="var(--font-body)"
             fontWeight="600"
           >
-            Cliquez "Calculer" pour lancer l'imbrication
+            Click "Calculate" to start nesting
           </text>
         )}
       </svg>
@@ -280,7 +280,7 @@ export default function NestingCanvas({ result, sheetData }) {
           <strong>{result.placed_pieces[hoveredPiece].label}</strong>
           <span>{result.placed_pieces[hoveredPiece].width}×{result.placed_pieces[hoveredPiece].height} mm</span>
           <span>Position: ({result.placed_pieces[hoveredPiece].x}, {result.placed_pieces[hoveredPiece].y})</span>
-          {result.placed_pieces[hoveredPiece].rotated && <span className="rotated-badge">↻ Rotée 90°</span>}
+          {result.placed_pieces[hoveredPiece].rotated && <span className="rotated-badge">↻ Rotated 90°</span>}
         </div>
       )}
     </div>

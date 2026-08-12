@@ -1,61 +1,61 @@
-# OptiTôle - Logiciel d'Optimisation de Découpe (Nesting)
+# OptiTole - Cutting Optimization Software (Nesting)
 
-OptiTôle est un logiciel de placement 2D (nesting) conçu pour optimiser la découpe de pièces sur des plaques de tôle (laser, plasma, jet d'eau). L'application place intelligemment des pièces de formes variées sur une surface rectangulaire afin de minimiser les chutes et d'augmenter le taux d'utilisation de la matière.
+OptiTole is a 2D nesting software designed to optimize the cutting of parts on sheet metal (laser, plasma, waterjet). The application intelligently places variously shaped parts on a rectangular surface to minimize scrap and increase material utilization.
 
-## Fonctionnalités Principales
+## Key Features
 
-- **Import de Pièces** : Import de fichiers DXF contenant les géométries des pièces à découper.
-- **Paramétrage** : Définition des dimensions de la tôle brute (longueur et largeur).
-- **Moteur de Placement (Nesting)** : Algorithme basé sur la méthode No-Fit-Polygon pour un agencement ultra-optimisé, avec rotation libre des pièces.
-- **Export DXF** : Génération d'un fichier DXF prêt à être envoyé à la machine de découpe, contenant les pièces imbriquées de manière optimale.
-- **Logiciel de Bureau Indépendant** : L'application est un exécutable natif ne nécessitant aucune installation de Node.js ou Python chez l'utilisateur final.
+- **Part Import**: Import DXF files containing the geometries of the parts to be cut.
+- **Configuration**: Define the dimensions of the raw sheet metal (length and width).
+- **Nesting Engine**: Algorithm based on the No-Fit-Polygon method for highly optimized layout, with free rotation of parts.
+- **DXF Export**: Generation of a DXF file ready to be sent to the cutting machine, containing the optimally nested parts.
+- **Standalone Desktop Software**: The application is a native executable requiring no installation of Node.js or Python on the end user's machine.
 
 ## Architecture
 
-Le projet est divisé en deux parties principales empaquetées dans une coquille Electron :
+The project is divided into two main parts packaged within an Electron shell:
 
-1. **Frontend (Next.js / React)** : Interface utilisateur moderne, ergonomique et réactive, permettant la visualisation en direct (canvas) des pièces importées et du résultat de l'imbrication.
-2. **Backend (FastAPI / Python)** : Moteur de calcul robuste intégrant `ezdxf` pour la manipulation des fichiers géométriques et des librairies de traitement polygonale (Shapely) pour les calculs de collision et de placement.
+1. **Frontend (Next.js / React)**: Modern, ergonomic, and responsive user interface, allowing live visualization (canvas) of imported parts and the nesting result.
+2. **Backend (FastAPI / Python)**: Robust calculation engine integrating `ezdxf` for manipulating geometric files and polygon processing libraries (Shapely) for collision and placement calculations.
 
-## Instructions de Développement
+## Development Instructions
 
-### Prérequis
+### Prerequisites
 - [Node.js](https://nodejs.org/)
 - [Python 3.12](https://www.python.org/)
 
-### Lancement en mode développement
+### Launching in Development Mode
 
-1. **Démarrer le backend (FastAPI)**
+1. **Start the backend (FastAPI)**
    ```bash
    cd backend
    pip install -r requirements.txt
    uvicorn main:app --reload
    ```
 
-2. **Démarrer le frontend (Next.js)**
+2. **Start the frontend (Next.js)**
    ```bash
    cd frontend
    npm install
    npm run dev
    ```
 
-### Compilation de l'application Windows (.exe)
+### Compiling the Windows Application (.exe)
 
-L'application peut être compilée en un exécutable autonome (standalone) grâce à Electron et PyInstaller :
+The application can be compiled into a standalone executable using Electron and PyInstaller:
 
 ```bash
-# À la racine du projet
+# At the root of the project
 npm install
 npm run build:app
 ```
-> Le logiciel final (.exe) sera généré dans le dossier `dist/`.
+> The final software (.exe) will be generated in the `dist/` folder.
 
 ## Technologies
 
-- **Frontend** : Next.js, React, Tailwind CSS
-- **Backend** : Python, FastAPI, ezdxf, Shapely
-- **Desktop Wrapper** : Electron, @electron/packager, PyInstaller
+- **Frontend**: Next.js, React, Tailwind CSS
+- **Backend**: Python, FastAPI, ezdxf, Shapely
+- **Desktop Wrapper**: Electron, @electron/packager, PyInstaller
 
 ---
 
-*Développé dans le cadre d'un stage de développement d'outils industriels.*
+*Developed as part of an industrial tool development internship.*

@@ -26,13 +26,13 @@ export default function SheetForm({ sheetData, onUpdate }) {
             <line x1="2" y1="6" x2="18" y2="6" stroke="var(--accent)" strokeWidth="0.5" opacity="0.4" />
           </svg>
         </div>
-        <h2 className="card-title">Tôle Principale</h2>
+        <h2 className="card-title">Main Sheet</h2>
         <span className={`cut-badge ${cutType.toLowerCase()}`}>{cutType}</span>
       </div>
 
       <div className="form-grid">
         <div className="form-group">
-          <label className="form-label">Largeur (mm)</label>
+          <label className="form-label">Width (mm)</label>
           <input
             type="number"
             className="form-input"
@@ -44,7 +44,7 @@ export default function SheetForm({ sheetData, onUpdate }) {
         </div>
 
         <div className="form-group">
-          <label className="form-label">Hauteur (mm)</label>
+          <label className="form-label">Height (mm)</label>
           <input
             type="number"
             className="form-input"
@@ -56,7 +56,7 @@ export default function SheetForm({ sheetData, onUpdate }) {
         </div>
 
         <div className="form-group">
-          <label className="form-label">Épaisseur (mm)</label>
+          <label className="form-label">Thickness (mm)</label>
           <input
             type="number"
             className="form-input"
@@ -71,7 +71,7 @@ export default function SheetForm({ sheetData, onUpdate }) {
         </div>
 
         <div className="form-group">
-          <label className="form-label">Marge tôle (mm)</label>
+          <label className="form-label">Sheet margin (mm)</label>
           <input
             type="number"
             className="form-input"
@@ -80,14 +80,14 @@ export default function SheetForm({ sheetData, onUpdate }) {
             min="0"
             step="1"
           />
-          <span className="form-hint">Zone de serrage / bords</span>
+          <span className="form-hint">Clamping zone / edges</span>
         </div>
       </div>
 
       <div className="kerf-section">
         <div className="form-group" style={{ flex: 1 }}>
           <label className="form-label">
-            Kerf — Espacement inter-pièces (mm)
+            Kerf — Part spacing (mm)
           </label>
           <div className="kerf-input-row">
             <input
@@ -110,13 +110,13 @@ export default function SheetForm({ sheetData, onUpdate }) {
             />
           </div>
           <span className="form-hint">
-            Suggestion {cutType}: {suggestedKerf}mm
+            Sugerencia {cutType}: {suggestedKerf}mm
             {sheetData.kerf !== suggestedKerf && (
               <button
                 className="hint-btn"
                 onClick={() => onUpdate({ ...sheetData, kerf: suggestedKerf })}
               >
-                Appliquer
+                Apply
               </button>
             )}
           </span>
@@ -125,13 +125,13 @@ export default function SheetForm({ sheetData, onUpdate }) {
 
       <div className="sheet-summary">
         <div className="summary-item">
-          <span className="summary-label">Surface totale</span>
+          <span className="summary-label">Total area</span>
           <span className="summary-value">
             {((sheetData.sheet_width * sheetData.sheet_height) / 1e6).toFixed(2)} m²
           </span>
         </div>
         <div className="summary-item">
-          <span className="summary-label">Zone utile</span>
+          <span className="summary-label">Usable area</span>
           <span className="summary-value">
             {(((sheetData.sheet_width - 2 * sheetData.sheet_margin) *
               (sheetData.sheet_height - 2 * sheetData.sheet_margin)) / 1e6).toFixed(2)} m²

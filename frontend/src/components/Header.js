@@ -33,17 +33,17 @@ export default function Header() {
           </div>
           <div>
             <h1 className="header-title">SNETH</h1>
-            <p className="header-subtitle">Module Nesting — Optimisation Découpe</p>
+            <p className="header-subtitle">Nesting Module — Cutting Optimization</p>
           </div>
         </div>
 
         <div className="header-right">
           <div className="header-badge">
-            <span className="label-text">ATELIER 4.0</span>
+            <span className="label-text">WORKSHOP 4.0</span>
           </div>
           <div className={`status-indicator ${backendOnline ? 'online' : 'offline'}`}>
             <span className="status-dot"></span>
-            <span className="status-text">{backendOnline ? 'API Connectée' : 'API Hors ligne'}</span>
+            <span className="status-text">{backendOnline ? 'API Connected' : 'API Offline'}</span>
           </div>
         </div>
       </div>

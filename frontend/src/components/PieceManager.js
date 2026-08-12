@@ -7,11 +7,11 @@
 import { useState } from 'react';
 
 const PRESETS = [
-  { label: 'Gousset standard', width: 200, height: 150 },
-  { label: 'Platine 300×200', width: 300, height: 200 },
-  { label: 'Raidisseur 150×100', width: 150, height: 100 },
-  { label: 'Plaque 500×400', width: 500, height: 400 },
-  { label: 'Entretoise 250×80', width: 250, height: 80 },
+  { label: 'Standard Gusset', width: 200, height: 150 },
+  { label: 'Plate 300×200', width: 300, height: 200 },
+  { label: 'Stiffener 150×100', width: 150, height: 100 },
+  { label: 'Sheet 500×400', width: 500, height: 400 },
+  { label: 'Spacer 250×80', width: 250, height: 80 },
 ];
 
 let pieceCounter = 0;
@@ -85,15 +85,15 @@ export default function PieceManager({ pieces, onUpdate }) {
             <rect x="10" y="9" width="7" height="8" rx="1" stroke="var(--accent)" strokeWidth="1.5" />
           </svg>
         </div>
-        <h2 className="card-title">Pièces à Découper</h2>
+        <h2 className="card-title">Pieces to Cut</h2>
         {pieces.length > 0 && (
-          <span className="piece-count">{totalInstances} pièce{totalInstances > 1 ? 's' : ''}</span>
+          <span className="piece-count">{totalInstances} piece{totalInstances > 1 ? 's' : ''}</span>
         )}
       </div>
 
       {/* Presets */}
       <div className="presets-section">
-        <span className="label-text">PIÈCES PRÉDÉFINIES</span>
+        <span className="label-text">PRESETS</span>
         <div className="presets-grid">
           {PRESETS.map((preset, i) => (
             <button
@@ -110,12 +110,12 @@ export default function PieceManager({ pieces, onUpdate }) {
 
       {/* Manual add */}
       <div className="add-piece-section">
-        <span className="label-text">AJOUTER MANUELLEMENT</span>
+        <span className="label-text">ADD MANUALLY</span>
         <div className="add-piece-form">
           <input
             type="text"
             className="form-input"
-            placeholder="Nom de la pièce"
+            placeholder="Piece name"
             value={newPiece.label}
             onChange={(e) => setNewPiece({ ...newPiece, label: e.target.value })}
             onKeyDown={(e) => e.key === 'Enter' && addPiece()}
@@ -124,7 +124,7 @@ export default function PieceManager({ pieces, onUpdate }) {
             <input
               type="number"
               className="form-input"
-              placeholder="Largeur"
+              placeholder="Width"
               value={newPiece.width}
               onChange={(e) => setNewPiece({ ...newPiece, width: e.target.value })}
               min="1"
@@ -133,7 +133,7 @@ export default function PieceManager({ pieces, onUpdate }) {
             <input
               type="number"
               className="form-input"
-              placeholder="Hauteur"
+              placeholder="Height"
               value={newPiece.height}
               onChange={(e) => setNewPiece({ ...newPiece, height: e.target.value })}
               min="1"
@@ -141,7 +141,7 @@ export default function PieceManager({ pieces, onUpdate }) {
           </div>
           <div className="add-piece-options">
             <div className="quantity-control">
-              <label className="form-label">Qté</label>
+              <label className="form-label">Qty</label>
               <input
                 type="number"
                 className="form-input qty-input"
@@ -156,7 +156,7 @@ export default function PieceManager({ pieces, onUpdate }) {
                 checked={newPiece.allow_rotation}
                 onChange={(e) => setNewPiece({ ...newPiece, allow_rotation: e.target.checked })}
               />
-              <span>Rotation 90°</span>
+              <span>90° Rotation</span>
             </label>
           </div>
           <button className="btn btn-add" onClick={addPiece}>
@@ -164,7 +164,7 @@ export default function PieceManager({ pieces, onUpdate }) {
               <line x1="8" y1="3" x2="8" y2="13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
               <line x1="3" y1="8" x2="13" y2="8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
             </svg>
-            Ajouter
+            Add
           </button>
         </div>
       </div>
@@ -172,7 +172,7 @@ export default function PieceManager({ pieces, onUpdate }) {
       {/* Piece list */}
       {pieces.length > 0 && (
         <div className="piece-list">
-          <span className="label-text">LISTE DES PIÈCES</span>
+          <span className="label-text">PIECE LIST</span>
           {pieces.map((piece, index) => (
             <div key={piece.id + index} className="piece-item">
               <div className="piece-info">
@@ -184,7 +184,7 @@ export default function PieceManager({ pieces, onUpdate }) {
                 <button
                   className={`rotation-toggle ${piece.allow_rotation ? 'active' : ''}`}
                   onClick={() => toggleRotation(index)}
-                  title={piece.allow_rotation ? 'Rotation activée' : 'Rotation désactivée'}
+                  title={piece.allow_rotation ? 'Rotation enabled' : 'Rotation disabled'}
                 >
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                     <path d="M11 5a5 5 0 10-1.5 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
@@ -206,8 +206,8 @@ export default function PieceManager({ pieces, onUpdate }) {
             </div>
           ))}
           <div className="piece-list-summary">
-            <span>{totalInstances} instance{totalInstances > 1 ? 's' : ''} totale{totalInstances > 1 ? 's' : ''}</span>
-            <span>Surface: {(totalArea / 1e6).toFixed(3)} m²</span>
+            <span>{totalInstances} total instance{totalInstances > 1 ? 's' : ''}</span>
+            <span>Area: {(totalArea / 1e6).toFixed(3)} m²</span>
           </div>
         </div>
       )}

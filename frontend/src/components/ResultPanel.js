@@ -39,7 +39,7 @@ export default function ResultPanel({ result, onDownloadDXF, isDownloading }) {
                 {result.utilization_rate.toFixed(1)}%
               </text>
               <text x="60" y="72" textAnchor="middle" fill="rgba(255,255,255,0.5)" fontSize="9" fontFamily="var(--font-body)">
-                UTILISATION
+                UTILIZATION
               </text>
             </svg>
           </div>
@@ -47,19 +47,19 @@ export default function ResultPanel({ result, onDownloadDXF, isDownloading }) {
 
         {/* Stats grid */}
         <div className="stat-card">
-          <span className="stat-label">Pièces placées</span>
+          <span className="stat-label">Placed pieces</span>
           <span className="stat-value">{result.total_placed}<span className="stat-total">/{result.total_requested}</span></span>
         </div>
 
         <div className="stat-card">
-          <span className="stat-label">Type de coupe</span>
+          <span className="stat-label">Cut type</span>
           <span className={`stat-value cut-type-value ${result.cut_type}`}>
             {result.cut_type === 'laser' ? '⚡ LASER' : '🔥 PLASMA'}
           </span>
         </div>
 
         <div className="stat-card">
-          <span className="stat-label">Kerf appliqué</span>
+          <span className="stat-label">Applied Kerf</span>
           <span className="stat-value">{result.kerf} mm</span>
         </div>
       </div>
@@ -73,7 +73,7 @@ export default function ResultPanel({ result, onDownloadDXF, isDownloading }) {
               <line x1="9" y1="6" x2="9" y2="10" stroke="var(--warning)" strokeWidth="1.5" strokeLinecap="round" />
               <circle cx="9" cy="13" r="0.8" fill="var(--warning)" />
             </svg>
-            <span>{result.unplaced_pieces.length} pièce{result.unplaced_pieces.length > 1 ? 's' : ''} non placée{result.unplaced_pieces.length > 1 ? 's' : ''}</span>
+            <span>{result.unplaced_pieces.length} unplaced piece{result.unplaced_pieces.length > 1 ? 's' : ''}</span>
           </div>
           <div className="unplaced-list">
             {result.unplaced_pieces.map((piece, i) => (
@@ -94,7 +94,7 @@ export default function ResultPanel({ result, onDownloadDXF, isDownloading }) {
         {isDownloading ? (
           <>
             <span className="spinner"></span>
-            Génération en cours...
+            Generating...
           </>
         ) : (
           <>
@@ -102,7 +102,7 @@ export default function ResultPanel({ result, onDownloadDXF, isDownloading }) {
               <path d="M10 3v10M10 13l-4-4M10 13l4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               <path d="M3 15v2h14v-2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            Télécharger le fichier DXF
+            Download DXF file
           </>
         )}
       </button>

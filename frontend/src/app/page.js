@@ -32,7 +32,7 @@ export default function Home() {
   // ── Handlers ──
   const handleCalculate = useCallback(async () => {
     if (pieces.length === 0) {
-      setError('Ajoutez au moins une pièce avant de calculer.');
+      setError('Add at least one piece before calculating.');
       return;
     }
 
@@ -48,7 +48,7 @@ export default function Home() {
       const nestResult = await previewNesting(requestBody);
       setResult(nestResult);
     } catch (err) {
-      setError(err.message || 'Erreur lors du calcul de l\'imbrication.');
+      setError(err.message || 'Error calculating nesting.');
       console.error('Nesting error:', err);
     } finally {
       setIsCalculating(false);
@@ -69,7 +69,7 @@ export default function Home() {
 
       await downloadDXF(requestBody);
     } catch (err) {
-      setError(err.message || 'Erreur lors de la génération du fichier DXF.');
+      setError(err.message || 'Error generating DXF file.');
       console.error('DXF error:', err);
     } finally {
       setIsDownloading(false);
@@ -105,7 +105,7 @@ export default function Home() {
               {isCalculating ? (
                 <>
                   <span className="spinner"></span>
-                  Calcul en cours...
+                  Calculating...
                 </>
               ) : (
                 <>
@@ -115,7 +115,7 @@ export default function Home() {
                     <rect x="5" y="10" width="3" height="3" rx="0.5" fill="currentColor" opacity="0.7" />
                     <rect x="10" y="5" width="3" height="8" rx="0.5" fill="currentColor" opacity="0.7" />
                   </svg>
-                  Calculer l'imbrication
+                  Calculate Nesting
                 </>
               )}
             </button>
