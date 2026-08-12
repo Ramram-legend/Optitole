@@ -1,0 +1,46 @@
+{
+  "name": "optitole-desktop",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "install:all": "npm install && cd frontend && npm install",
+    "build:backend": "cd backend && pyinstaller --name optitole-backend --onefile main.py --distpath ../backend-dist",
+    "build:frontend": "cd frontend && npm run build",
+    "build:all": "npm run build:backend && npm run build:frontend",
+    "pack:win": "npx @electron/packager . OptiTole --platform=win32 --arch=x64 --out=dist --overwrite --ignore=\"^/(backend($|/)|frontend/(node_modules|\\.next|src|public)|dist|\\.git|\\.system_generated)\"",
+    "build:app": "npm run build:all && npm run pack:win",
+    "start": "electron ."
+  },
+  "dependencies": {
+    "electron-serve": "^1.3.0"
+  },
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "@electron/packager": "^18.3.3"
+  },
+  "build": {
+    "appId": "com.optitole.app",
+    "productName": "OptiTole",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "extraResources": [
+      {
+        "from": "backend-dist",
+        "to": "backend-dist"
+      }
+    ],
+    "files": [
+      "main.js",
+      "package.json",
+      "node_modules/**/*",
+      {
+        "from": "frontend/out",
+        "to": "frontend"
+      }
+    ]
+  }
+}

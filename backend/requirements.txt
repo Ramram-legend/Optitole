@@ -1,0 +1,7 @@
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+rectpack>=0.2.2
+ezdxf>=0.18.0
+pydantic>=2.0.0
+python-multipart>=0.0.6
+pyinstaller>=6.5.0
